@@ -1,0 +1,29 @@
+{
+    "version": "1.0.0-*",
+    "dependencies": {
+        "System.Collections": "",
+        "System.Threading": "",
+        "System.Net.Sockets": "",
+        "System.Threading.Tasks": "",
+        "System.IO": "",
+        "IRCBot.Common": "1.0.0-*"
+    },
+
+    "frameworks": {
+        "aspnet50": {
+            "dependencies": {
+            }
+        },
+        "aspnetcore50": {
+            "dependencies": {
+                "System.Runtime": "4.0.20-beta-22523",
+                "System.Collections": "4.0.10-beta-22605",
+                "System.Threading": "4.0.10-beta-22605",
+                "System.Net.Sockets": "4.0.0-beta-22605",
+                "System.Threading.Tasks": "4.0.10-beta-22605",
+                "System.Threading.Thread": "4.0.0-beta-22605",
+                "System.IO": "4.0.10-beta-22605"
+            }
+        }
+    }
+}

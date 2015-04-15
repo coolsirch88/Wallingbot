@@ -1,0 +1,4 @@
+﻿{
+    "mongoconnection": "mongodb://localhost",
+    "database":  "mongomvc"
+}

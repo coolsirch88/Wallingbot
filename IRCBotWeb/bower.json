@@ -1,0 +1,37 @@
+{
+    "name": "IRCBotWeb",
+    "private": true,
+    "dependencies": {
+        "jquery": "~2.1.3",
+        "jquery-ui": "~1.11.4",
+        "bootstrap-sass-official": "~3.3.4",
+        "jquery-validation": "~1.13.1",
+        "jquery-validation-unobtrusive": "~3.2.2",
+        "signalr": "~2.2.0",
+        "foundation-sass": "~5.5.2"
+    },
+    "exportsOverride": {
+        "bootstrap-sass-official": {
+            "../js": "assets/javascripts/*.*",
+            "../sass": "assets/stylesheets/*.*",
+            "../sass/bootstrap": "assets/stylesheets/bootstrap/*.*",
+            "../sass/bootstrap/mixins": "assets/stylesheets/bootstrap/mixins", 
+            "../fonts": "assets/fonts/bootstrap/*.*"
+        },
+        "jquery": {
+            "../js": "dist/jquery.{js,min.js,min.map}"
+        },
+        "jquery-ui": {
+            "../js": "jquery-ui.{js,min.js}"
+        },
+        "jquery-validation": {
+            "../js": "dist/jquery.validate.{js,min.js}"
+        },
+        "jquery-validation-unobtrusive": {
+            "../js": "jquery.validate.unobtrusive.{js,min.js}"
+        },
+        "signalr": {
+            "../js": "jquery.signalR.{js,min.js}"
+        }
+    }
+}

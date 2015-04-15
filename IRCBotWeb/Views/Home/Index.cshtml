@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Messages";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-11">
+            <h2>Chat</h2>
+            <div class="limit-height">
+                <ul id="discussion"></ul>
+            </div>
+        </div>
+        <div class="col-lg-1">
+            <h2>Actions</h2>
+            <input type="button" id="startbot" value="Start" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-11">
+            <input type="text" id="message" class="message-input" />
+        </div>
+        <div class="col-lg-1">
+            <input type="button" id="send-message" value="Send" />
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/lib/js/jquery.signalR.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function () {
+            // Reference the auto-generated proxy for the hub.
+            var chat = $.connection.IRC;
+            // Create a function that the hub can call back to display messages.
+            chat.client.addNewMessageToPage = function (name, message) {
+                // Add the message to the page.
+                $('#discussion').append('<li><strong>' + htmlEncode(name)
+                    + '</strong>: ' + htmlEncode(message) + '</li>');
+                $(".limit-height").animate({ scrollTop: $(".limit-height")[0].scrollHeight }, 100);
+            };
+            $.connection.hub.start().done(function () {
+                chat.server.isConnected().done(function (result) {
+                    if (result) {
+                        $('#startbot').val('Stop');
+                    }
+                });
+                $('#send-message').on('click', function () {
+                    chat.server.send($('#message').val());
+                });
+                $('#startbot').on('click', function () {
+                    if ($('#startbot').val() == 'Start') {
+                        chat.server.start();
+                        $('#startbot').val('Stop');
+                    }
+                    else {
+                        chat.server.stop();
+                        $('#startbot').val('Start');
+                    }
+                });
+            });
+        });
+        // This optional function html-encodes messages for display in the page.
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+    </script>
+}
