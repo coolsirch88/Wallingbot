@@ -1,4 +1,5 @@
-﻿using IRCBot.Common;
+﻿using System;
+using IRCBot.Common;
 using IRCBot.Lib;
 using IRCBotWeb.Config;
 using IRCBotWeb.Hubs;
@@ -26,14 +27,14 @@ namespace IRCBotWeb
         // This method gets called by the runtime.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(Configuration);
+            services.AddMvc();
             services.Configure<EnvConfiguration>(Configuration);
             services.AddSingleton<IIRCBot, IRC>();
-            services.Configure<MvcOptions>(options =>
-                                     options
-                                     .OutputFormatters
-                                     .RemoveAll(formatter => formatter.Instance is XmlDataContractSerializerOutputFormatter)
-                                           );
+            //services.Configure<MvcOptions>(options =>
+            //                         options
+            //                         .OutputFormatters
+            //                         .RemoveAll(formatter => formatter.Instance is XmlDataContractSerializerOutputFormatter)
+            //                               );
             services.AddSignalR(options =>
                 {
                     options.Hubs.EnableDetailedErrors = true;

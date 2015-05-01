@@ -4,14 +4,14 @@
     },
 
     "frameworks" : {
-        "aspnet50" : { 
+        "dnx451" : { 
             "dependencies": {
             }
         },
-        "aspnetcore50" : { 
+        "dnxcore50" : { 
             "dependencies": {
-                "System.Runtime": "4.0.20-beta-22523",
-                "System.Collections": "4.0.10-beta-22605",
+                "System.Runtime": "4.0.20-beta-22605",
+                "System.Collections": "4.0.10-beta-22816"
             }
         }
     }
